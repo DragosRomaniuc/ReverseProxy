@@ -71,7 +71,7 @@ app.get("/performancemonitor",(req,res)=>{
    
     // console.log("another: ",path.basename(path.dirname(filename)));
     console.groupEnd();
-    res.sendFile('PerformanceMonitor' + "/" + "build" + "/" + "index.html",{'root':'../../'});
+    res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
  
 // console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build', 'index.html'))
     // res.send("success");
