@@ -52,29 +52,29 @@ app.get('/', function (req, res) {
 });
 
 app.get("/performancemonitor",(req,res)=>{
-//     let path = __dirname.split("/");
-//     console.group('REQ');
-//     console.log("Req: ",req);
-//     console.groupEnd();
-//     console.group("Path details");
-//     console.log("Path: ", req.path);
-//     console.log("Dir: ", req.dir);
-//     console.log("Original url: ", req.originalUrl);
-//     console.log("BaseUrl: ", req.baseUrl);
-//     console.groupEnd();
-// // app.get('/', function (req, res) {
-//     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// // });
-//     console.group("Dirnames");
+    let path = __dirname.split("/");
+    // console.group('REQ');
+    // console.log("Req: ",req);
+    // console.groupEnd();
+    console.group("Path details");
+    console.log("Path: ", req.path);
+    console.log("Dir: ", req.dir);
+    console.log("Original url: ", req.originalUrl);
+    console.log("BaseUrl: ", req.baseUrl);
+    console.groupEnd();
+// app.get('/', function (req, res) {
+    // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+    console.group("Dirnames");
 
-//     console.log("__Dirname", __dirname);
+    console.log("__Dirname", __dirname);
    
-//     // console.log("another: ",path.basename(path.dirname(filename)));
-//     console.groupEnd();
-//     res.sendFile(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build', 'index.html'));
+    // console.log("another: ",path.basename(path.dirname(filename)));
+    console.groupEnd();
+    res.sendFile(express.static(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build', 'index.html')));
  
-console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build', 'index.html'))
-    res.send("success");
+// console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build', 'index.html'))
+    // res.send("success");
 })
 
 app.post("/live",(req,res)=>{
