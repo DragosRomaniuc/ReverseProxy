@@ -9,6 +9,7 @@ var servers = [
 ]
 
 const app = express();
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build', 'static')));
 // console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'))
 // console.log(path.resolve('../../', 'PerformanceMonitor', 'client', 'build'), 'from here');
@@ -29,31 +30,31 @@ app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'b
 //     console.log("Proxy listening on port 80");
 // })
 app.use(cors());
-app.get('/ping', function (req, res) {
-    return res.send('pong');
-});
-app.get('/', function (req, res) {
-    console.group('REQ');
-    console.log("Req: ",req);
-    console.groupEnd();
-    console.group("Path details");
-    console.log("Path: ", req.path);
-    console.log("Dir: ", req.dir);
-    console.log("Original url: ", req.originalUrl);
-    console.log("BaseUrl: ", req.baseUrl);
-    console.groupEnd();
-// app.get('/', function (req, res) {
-    // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// app.get('/ping', function (req, res) {
+//     return res.send('pong');
 // });
-    console.group("Dirnames");
+// app.get('/', function (req, res) {
+//     console.group('REQ');
+//     console.log("Req: ",req);
+//     console.groupEnd();
+//     console.group("Path details");
+//     console.log("Path: ", req.path);
+//     console.log("Dir: ", req.dir);
+//     console.log("Original url: ", req.originalUrl);
+//     console.log("BaseUrl: ", req.baseUrl);
+//     console.groupEnd();
+// // app.get('/', function (req, res) {
+//     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// // });
+//     console.group("Dirnames");
 
-    console.log("__Dirname", __dirname);
-    console.log("another: ", path.resolve(__dirname, '..'));
-    // console.log("another: ",path.basename(path.dirname(filename)));
-    console.groupEnd();
+//     console.log("__Dirname", __dirname);
+//     console.log("another: ", path.resolve(__dirname, '..'));
+//     // console.log("another: ",path.basename(path.dirname(filename)));
+//     console.groupEnd();
 
-    res.send("success");
-});
+//     res.send("success");
+// });
 
 app.get("/performancemonitor",(req,res)=>{
     // dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
