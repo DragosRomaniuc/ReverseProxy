@@ -69,7 +69,7 @@ app.get("/performancemonitor",(req,res)=>{
     console.group("Dirnames");
 
     console.log("__Dirname", __dirname);
-    console.log("another: ", path.resolve(__dirname, '..'));
+   
     // console.log("another: ",path.basename(path.dirname(filename)));
     console.groupEnd();
 
