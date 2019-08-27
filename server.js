@@ -2,6 +2,7 @@
 var express = require('express');
 const cors = require('cors');
 const path = require('path');
+const dynamicStatic = require('express-dynamic-static')();
 
 var servers = [
     {host: "www.localhost.com", port: 80}
@@ -52,6 +53,7 @@ app.get('/', function (req, res) {
 });
 
 app.get("/performancemonitor",(req,res)=>{
+    dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build'));
     let path = __dirname.split("/");
     // console.group('REQ');
     // console.log("Req: ",req);
