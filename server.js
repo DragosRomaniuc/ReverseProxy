@@ -29,6 +29,9 @@ app.get('/ping', function (req, res) {
     return res.send('pong');
 });
 app.get('/', function (req, res) {
+    console.group('REQ');
+    console.log("Req: ",req);
+    console.groupEnd();
     console.group("Path details");
     console.log("Path: ", req.path);
     console.log("Dir: ", req.dir);
