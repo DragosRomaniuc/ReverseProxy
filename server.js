@@ -9,7 +9,9 @@ var servers = [
 ]
 
 const app = express();
-app.use(express.static(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build')));
+app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
+// console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'))
+// console.log(path.resolve('../../', 'PerformanceMonitor', 'client', 'build'), 'from here');
 // app.use(cors());
 
 // for (route of routes) {
