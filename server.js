@@ -50,4 +50,33 @@ app.get('/', function (req, res) {
 
     res.send("success");
 });
+
+app.get("/live",(req,res)=>{
+    console.group('REQ');
+    console.log("Req: ",req);
+    console.groupEnd();
+    console.group("Path details");
+    console.log("Path: ", req.path);
+    console.log("Dir: ", req.dir);
+    console.log("Original url: ", req.originalUrl);
+    console.log("BaseUrl: ", req.baseUrl);
+    console.groupEnd();
+// app.get('/', function (req, res) {
+    // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+    console.group("Dirnames");
+
+    console.log("__Dirname", __dirname);
+    console.log("another: ", path.resolve(__dirname, '..'));
+    // console.log("another: ",path.basename(path.dirname(filename)));
+    console.groupEnd();
+
+    res.send("success");
+})
+
+app.post("/live",(req,res)=>{
+    console.log(req.body);
+    res.send("am primit chestia asta", req.body);
+})
+
 app.listen(8081);
