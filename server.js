@@ -29,6 +29,22 @@ app.get('/ping', function (req, res) {
     return res.send('pong');
 });
 app.get('/', function (req, res) {
+    console.group("Path details");
+    console.log("Path: ", req.path);
+    console.log("Dir: ", req.dir);
+    console.log("Original url: ", req.originalUrl);
+    console.log("BaseUrl: ", req.baseUrl);
+    console.groupEnd();
+// app.get('/', function (req, res) {
+    // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
+    console.group("Dirnames");
+
+    console.log("__Dirname", __dirname);
+    console.log("another: ", path.resolve(__dirname, '..'));
+    console.log("another: ",path.basename(path.dirname(filename)));
+    console.groupEnd();
+    
     res.send("success");
 });
 app.listen(8081);
