@@ -51,7 +51,9 @@ app.get('/', function (req, res) {
     res.send("success");
 });
 
-app.get("/live",(req,res)=>{
+app.get("/performancemonitor",(req,res)=>{
+    let path = __dirname.split("/");
+    res.sendFile(path.join(path[1], path[2], "PerformanceMonitor", 'build', 'index.html'));
     console.group('REQ');
     console.log("Req: ",req);
     console.groupEnd();
