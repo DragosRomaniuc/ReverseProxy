@@ -1,9 +1,9 @@
 
 var express = require('express');
 const cors = require('cors');
-const path = require('path');
-const dynamicStatic = require('express-dynamic-static')();
 
+const dynamicStatic = require('express-dynamic-static')();
+const path = require('path');
 var servers = [
     {host: "www.localhost.com", port: 80}
 ]
@@ -54,25 +54,26 @@ app.get('/', function (req, res) {
 
 app.get("/performancemonitor",(req,res)=>{
     dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build'));
-    let path = __dirname.split("/");
-    // console.group('REQ');
-    // console.log("Req: ",req);
-    // console.groupEnd();
-    console.group("Path details");
-    console.log("Path: ", req.path);
-    console.log("Dir: ", req.dir);
-    console.log("Original url: ", req.originalUrl);
-    console.log("BaseUrl: ", req.baseUrl);
-    console.groupEnd();
-// app.get('/', function (req, res) {
-    // res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
-    console.group("Dirnames");
+//     let path = __dirname.split("/");
+//     // console.group('REQ');
+//     // console.log("Req: ",req);
+//     // console.groupEnd();
+//     console.group("Path details");
+//     console.log("Path: ", req.path);
+//     console.log("Dir: ", req.dir);
+//     console.log("Original url: ", req.originalUrl);
+//     console.log("BaseUrl: ", req.baseUrl);
+//     console.groupEnd();
+// // app.get('/', function (req, res) {
+//     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// // });
+//     console.group("Dirnames");
 
-    console.log("__Dirname", __dirname);
+//     console.log("__Dirname", __dirname);
    
-    // console.log("another: ",path.basename(path.dirname(filename)));
-    console.groupEnd();
+//     // console.log("another: ",path.basename(path.dirname(filename)));
+//     console.groupEnd();
+console.log("got here");
     res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
  
 // console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build', 'index.html'))
