@@ -1,7 +1,7 @@
 
 var express = require('express');
 const cors = require('cors');
-// const path = require('path');
+const path = require('path');
 
 var servers = [
     {host: "www.localhost.com", port: 80}
@@ -44,7 +44,7 @@ app.get('/', function (req, res) {
     console.log("another: ", path.resolve(__dirname, '..'));
     console.log("another: ",path.basename(path.dirname(filename)));
     console.groupEnd();
-    
+
     res.send("success");
 });
 app.listen(8081);
