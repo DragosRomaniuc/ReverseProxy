@@ -10,7 +10,7 @@ var servers = [
 
 const app = express();
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build', 'static')));
+app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
 // console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'))
 // console.log(path.resolve('../../', 'PerformanceMonitor', 'client', 'build'), 'from here');
 // app.use(cors());
