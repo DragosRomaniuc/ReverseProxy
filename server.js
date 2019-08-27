@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
 });
 
 app.get("/performancemonitor",(req,res)=>{
-    dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build'));
+    dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
 //     let path = __dirname.split("/");
 //     // console.group('REQ');
 //     // console.log("Req: ",req);
