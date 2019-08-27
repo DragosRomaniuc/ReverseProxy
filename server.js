@@ -9,6 +9,7 @@ var servers = [
 ]
 
 const app = express();
+app.use(express.static(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build')));
 // app.use(cors());
 
 // for (route of routes) {
@@ -53,7 +54,7 @@ app.get('/', function (req, res) {
 });
 
 app.get("/performancemonitor",(req,res)=>{
-    dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
+    // dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
 //     let path = __dirname.split("/");
 //     // console.group('REQ');
 //     // console.log("Req: ",req);
