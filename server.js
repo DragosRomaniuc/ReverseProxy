@@ -42,7 +42,7 @@ app.get('/', function (req, res) {
 
     console.log("__Dirname", __dirname);
     console.log("another: ", path.resolve(__dirname, '..'));
-    console.log("another: ",path.basename(path.dirname(filename)));
+    // console.log("another: ",path.basename(path.dirname(filename)));
     console.groupEnd();
 
     res.send("success");
