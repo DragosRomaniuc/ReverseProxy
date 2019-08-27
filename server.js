@@ -53,7 +53,7 @@ app.get('/', function (req, res) {
 
 app.get("/performancemonitor",(req,res)=>{
     let path = __dirname.split("/");
-    res.sendFile(path.join(path[1], path[2], "PerformanceMonitor", 'build', 'index.html'));
+    res.sendFile(path.join("PerformanceMonitor", 'build', 'index.html'),{root: "/var/www"});
     console.group('REQ');
     console.log("Req: ",req);
     console.groupEnd();
