@@ -99,9 +99,9 @@ app.get("/performancemonitor",(req,res)=>{
     console.groupEnd();
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
 console.log("got here");
-    res.sendFile(path.join(__dirname, 'build-performancemonitor', 'index.html'));
+    // res.sendFile(path.join(__dirname, 'build-performancemonitor', 'index.html'));
     // res.setHeader("Cache-Control", "no-cache");
-    // res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
+    res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
     // res.sendFile('Portofolio' + "/" + "build" + "/" + "index.html",{'root':'../../'});
 })
 
