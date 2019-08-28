@@ -3,10 +3,11 @@ var express = require('express');
 const cors = require('cors');
 const path = require('path');
 var serveStatic = require('serve-static')
-
+var compression = require('compression');
 const app = express();
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
+app.use(compression());
 app.use(serveStatic(path.resolve('../../', 'PerformanceMonitor', 'client', 'build'), {
     maxAge: '1d',
     setHeaders: setCustomCacheControl
