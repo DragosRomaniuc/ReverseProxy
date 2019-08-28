@@ -1,17 +1,31 @@
 
-var express = require('express');
+const express = require('express');
 const cors = require('cors');
 const path = require('path');
-var serveStatic = require('serve-static')
-var compression = require('compression');
+const bodyParser = require('body-parser');
 const app = express();
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
-app.use(compression());
-app.use(serveStatic(path.resolve('../../', 'PerformanceMonitor', 'client', 'build'), {
-    maxAge: '1d',
-    setHeaders: setCustomCacheControl
-  }))
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.urlencoded({extended: true, limit:'50mb'}))
+app.use(bodyParser.json())
+app.all('*', function(req, res, next) {
+    if (!req.get('Origin')) return next();
+
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', '*');
+    res.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Key, Cache-Control');
+    res.set('Access-Control-Request-Method', '*');
+    res.set('Access-Control-Expose-Headers', '*');
+    res.header('Cache-Control', 'private, no-cache, no-store, must-revalidate');
+    res.header('Expires', '-1');
+    res.header('Pragma', 'no-cache');
+
+    if ('OPTIONS' == req.method) return res.send(200);
+
+    next();
+});
+
 // console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'))
 // console.log(path.resolve('../../', 'PerformanceMonitor', 'client', 'build'), 'from here');
 // app.use(cors());
@@ -30,7 +44,7 @@ app.use(serveStatic(path.resolve('../../', 'PerformanceMonitor', 'client', 'buil
 // app.listen(80, ()=>{
 //     console.log("Proxy listening on port 80");
 // })
-app.use(cors());
+// app.use(cors());
 // app.get('/ping', function (req, res) {
 //     return res.send('pong');
 // });
@@ -83,17 +97,11 @@ app.get("/performancemonitor",(req,res)=>{
 //     console.groupEnd();
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
 console.log("got here");
-    res.setHeader("Cache-Control", "no-cache");
-    res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
+    res.sendFile(path.join(__dirname, 'build-performancemonitor', 'index.html'));
+    // res.setHeader("Cache-Control", "no-cache");
+    // res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
  
 })
 
 
 app.listen(8081);
-
-function setCustomCacheControl (res, path) {
-    if (serveStatic.mime.lookup(path) === 'text/html') {
-      // Custom Cache-Control for HTML files
-      res.setHeader('Cache-Control', 'public, max-age=0')
-    }
-  }
