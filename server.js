@@ -90,12 +90,12 @@ app.get("/performancemonitor",(req,res)=>{
 // // app.get('/', function (req, res) {
 //     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
 // // });
-//     console.group("Dirnames");
+    console.group("Dirnames");
 
     console.log("__Dirname", __dirname);
    
 //     // console.log("another: ",path.basename(path.dirname(filename)));
-//     console.groupEnd();
+    console.groupEnd();
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
 console.log("got here");
     res.sendFile(path.join(__dirname, 'build-performancemonitor', 'index.html'));
