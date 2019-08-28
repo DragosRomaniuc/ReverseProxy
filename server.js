@@ -55,9 +55,9 @@ app.use(cors());
 
 //     res.send("success");
 // });
-app.get("*",(req,res)=>{
-    next();
-})
+// app.get("*",(req,res)=>{
+//     next();
+// })
 
 app.get("/performancemonitor",(req,res)=>{
     // dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
