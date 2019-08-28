@@ -1,16 +1,11 @@
 
 const express = require('express');
 // const cors = require('cors');
+const proxy = require('http-proxy-middleware');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
-// app.use(express.static(path.join(__dirname, 'build')));
-app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
-// app.use(express.static(path.resolve('../../', 'Portofolio', 'build', 'static')));
-// app.use(express.static(path.join(__dirname,'build-performancemonitor','static')));
-// app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.urlencoded({extended: true, limit:'50mb'}))
-app.use(bodyParser.json())
+
 app.all('*', function(req, res, next) {
     if (!req.get('Origin')) return next();
 
@@ -27,6 +22,29 @@ app.all('*', function(req, res, next) {
 
     next();
 });
+
+app.use(
+    '/1',
+    proxy({ target: 'http://localhost:8085' })
+  );
+
+  app.use(
+    '/2',
+    proxy({ target: 'http://localhost:8086' })
+  );
+
+  app.use(
+    '/',
+    proxy({ target: 'http://frespire.com' })
+  );
+// app.use(express.static(path.join(__dirname, 'build')));
+// app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
+// app.use(express.static(path.resolve('../../', 'Portofolio', 'build', 'static')));
+// app.use(express.static(path.join(__dirname,'build-performancemonitor','static')));
+// app.use(express.static(path.join(__dirname, 'public')));
+// app.use(bodyParser.urlencoded({extended: true, limit:'50mb'}))
+// app.use(bodyParser.json())
+
 
 // console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'))
 // console.log(path.resolve('../../', 'PerformanceMonitor', 'client', 'build'), 'from here');
@@ -76,34 +94,63 @@ app.all('*', function(req, res, next) {
 //     next();
 // })
 
-app.get("/",(req,res)=>{
-    // dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
-//     let path = __dirname.split("/");
-//     // console.group('REQ');
-//     // console.log("Req: ",req);
-//     // console.groupEnd();
-//     console.group("Path details");
-//     console.log("Path: ", req.path);
-//     console.log("Dir: ", req.dir);
-//     console.log("Original url: ", req.originalUrl);
-//     console.log("BaseUrl: ", req.baseUrl);
-//     console.groupEnd();
-// // app.get('/', function (req, res) {
-//     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// // });
-    console.group("Dirnamess");
+// app.get("/1",(req,res)=>{
+//     // dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
+// //     let path = __dirname.split("/");
+// //     // console.group('REQ');
+// //     // console.log("Req: ",req);
+// //     // console.groupEnd();
+// //     console.group("Path details");
+// //     console.log("Path: ", req.path);
+// //     console.log("Dir: ", req.dir);
+// //     console.log("Original url: ", req.originalUrl);
+// //     console.log("BaseUrl: ", req.baseUrl);
+// //     console.groupEnd();
+// // // app.get('/', function (req, res) {
+// //     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// // // });
+//     console.group("Dirnamess");
 
-    console.log("__Dirname", __dirname);
+//     console.log("__Dirname", __dirname);
    
-//     // console.log("another: ",path.basename(path.dirname(filename)));
-    console.groupEnd();
-// app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
-console.log("got here");
-    // res.sendFile(path.join(__dirname, 'build', 'index.html'));
-    // res.setHeader("Cache-Control", "no-cache");
-    res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
-    // res.sendFile('Portofolio' + "/" + "build" + "/" + "index.html",{'root':'../../'});
-})
+// //     // console.log("another: ",path.basename(path.dirname(filename)));
+//     console.groupEnd();
+// // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
+// console.log("got here");
+//     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//     // res.setHeader("Cache-Control", "no-cache");
+//     res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
+//     // res.sendFile('Portofolio' + "/" + "build" + "/" + "index.html",{'root':'../../'});
+// })
+
+// app.get("/2",(req,res)=>{
+//     // dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
+// //     let path = __dirname.split("/");
+// //     // console.group('REQ');
+// //     // console.log("Req: ",req);
+// //     // console.groupEnd();
+// //     console.group("Path details");
+// //     console.log("Path: ", req.path);
+// //     console.log("Dir: ", req.dir);
+// //     console.log("Original url: ", req.originalUrl);
+// //     console.log("BaseUrl: ", req.baseUrl);
+// //     console.groupEnd();
+// // // app.get('/', function (req, res) {
+// //     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// // // });
+//     console.group("Dirnamess");
+
+//     console.log("__Dirname", __dirname);
+   
+// //     // console.log("another: ",path.basename(path.dirname(filename)));
+//     console.groupEnd();
+// // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
+// console.log("got here");
+//     // res.sendFile(path.join(__dirname, 'build', 'index.html'));
+//     // res.setHeader("Cache-Control", "no-cache");
+//     res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
+//     // res.sendFile('Portofolio' + "/" + "build" + "/" + "index.html",{'root':'../../'});
+// })
 
 
 app.listen(8081);
