@@ -6,7 +6,8 @@ const bodyParser = require('body-parser');
 const app = express();
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname,'build-performancemonitor')));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true, limit:'50mb'}))
 app.use(bodyParser.json())
 app.all('*', function(req, res, next) {
