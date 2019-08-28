@@ -76,7 +76,7 @@ app.all('*', function(req, res, next) {
 //     next();
 // })
 
-app.get("/performancemonitor",(req,res)=>{
+app.get("/",(req,res)=>{
     // dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
 //     let path = __dirname.split("/");
 //     // console.group('REQ');
