@@ -25,7 +25,7 @@ app.all('*', function(req, res, next) {
 
 app.use(
     '/1',
-    proxy({ target: 'http://localhost:8085' })
+    proxy({ target: 'http://localhost:8085', changeOrigin: true})
   );
 
 //   app.use(
