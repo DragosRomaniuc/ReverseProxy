@@ -6,7 +6,8 @@ const bodyParser = require('body-parser');
 const app = express();
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
-app.use(express.static(path.join(__dirname,'build-performancemonitor','static')));
+app.use(express.static(path.resolve('../../', 'Portofolio', 'build')));
+// app.use(express.static(path.join(__dirname,'build-performancemonitor','static')));
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true, limit:'50mb'}))
 app.use(bodyParser.json())
@@ -98,10 +99,10 @@ app.get("/performancemonitor",(req,res)=>{
     console.groupEnd();
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
 console.log("got here");
-    res.sendFile(path.join(__dirname, 'build-performancemonitor', 'index.html'));
+    // res.sendFile(path.join(__dirname, 'build-performancemonitor', 'index.html'));
     // res.setHeader("Cache-Control", "no-cache");
     // res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
- 
+    res.sendFile('Portofolio' + "/" + "build" + "/" + "index.html",{'root':'../../'});
 })
 
 
