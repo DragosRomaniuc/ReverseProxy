@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 const app = express();
 // app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
-app.use(express.static(path.resolve('../../', 'Portofolio', 'build')));
+app.use(express.static(path.resolve('../../', 'Portofolio', 'build', 'static')));
 // app.use(express.static(path.join(__dirname,'build-performancemonitor','static')));
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: true, limit:'50mb'}))
