@@ -77,6 +77,7 @@ app.get("/performancemonitor",(req,res)=>{
    
 //     // console.log("another: ",path.basename(path.dirname(filename)));
 //     console.groupEnd();
+app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
 console.log("got here");
     res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
  
