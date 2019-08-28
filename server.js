@@ -28,15 +28,15 @@ app.use(
     proxy({ target: 'http://localhost:8085' })
   );
 
-  app.use(
-    '/2',
-    proxy({ target: 'http://localhost:8086' })
-  );
+//   app.use(
+//     '/2',
+//     proxy({ target: 'http://localhost:8086' })
+//   );
 
-  app.use(
-    '/',
-    proxy({ target: 'http://frespire.com' })
-  );
+//   app.use(
+//     '/',
+//     proxy({ target: 'http://frespire.com' })
+//   );
 // app.use(express.static(path.join(__dirname, 'build')));
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
 // app.use(express.static(path.resolve('../../', 'Portofolio', 'build', 'static')));
