@@ -1,16 +1,16 @@
 
 var express = require('express');
 const cors = require('cors');
-
-const dynamicStatic = require('express-dynamic-static')();
 const path = require('path');
-var servers = [
-    {host: "www.localhost.com", port: 80}
-]
+var serveStatic = require('serve-static')
 
 const app = express();
 // app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
+// app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
+app.use(serveStatic(path.resolve('../../', 'PerformanceMonitor', 'client', 'build'), {
+    maxAge: '1d',
+    setHeaders: setCustomCacheControl
+  }))
 // console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'))
 // console.log(path.resolve('../../', 'PerformanceMonitor', 'client', 'build'), 'from here');
 // app.use(cors());
@@ -55,6 +55,9 @@ app.use(cors());
 
 //     res.send("success");
 // });
+app.get("*",(req,res)=>{
+    next();
+})
 
 app.get("/performancemonitor",(req,res)=>{
     // dynamicStatic.setPath(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'client', 'build'));
@@ -77,17 +80,19 @@ app.get("/performancemonitor",(req,res)=>{
    
 //     // console.log("another: ",path.basename(path.dirname(filename)));
 //     console.groupEnd();
-app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
+// app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
 console.log("got here");
+    res.setHeader("Cache-Control", "no-cache");
     res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
  
-// console.log(path.join(__dirname, '..', '..', 'PerformanceMonitor', 'build', 'index.html'))
-    // res.send("success");
 })
 
-app.post("/live",(req,res)=>{
-    console.log(req.body);
-    res.send("am primit chestia asta", req.body);
-})
 
 app.listen(8081);
+
+function setCustomCacheControl (res, path) {
+    if (serveStatic.mime.lookup(path) === 'text/html') {
+      // Custom Cache-Control for HTML files
+      res.setHeader('Cache-Control', 'public, max-age=0')
+    }
+  }
