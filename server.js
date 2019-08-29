@@ -3,7 +3,7 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
-app.use("/performancemonitor", express.static(__dirname+ '/public'));
+
 app.use(bodyParser.urlencoded({extended: true, limit:'50mb'}))
 app.use(bodyParser.json())
 app.all('*', function(req, res, next) {
@@ -37,5 +37,5 @@ app.get("/performancemonitor",(req,res)=>{
     // res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
     // res.sendFile('Portofolio' + "/" + "build" + "/" + "index.html",{'root':'../../'});
 })
-
+app.use(express.static(__dirname+ '/public'));
 app.listen(8085);
