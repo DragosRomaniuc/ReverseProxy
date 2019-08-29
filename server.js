@@ -37,5 +37,5 @@ app.get("/performancemonitor",(req,res)=>{
     // res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
     // res.sendFile('Portofolio' + "/" + "build" + "/" + "index.html",{'root':'../../'});
 })
-app.use(express.static(__dirname+ '/public'));
+app.use(express.static('public'));
 app.listen(8085);
