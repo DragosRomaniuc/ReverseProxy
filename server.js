@@ -3,7 +3,6 @@ const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
-
 app.use(bodyParser.urlencoded({extended: true, limit:'50mb'}))
 app.use(bodyParser.json())
 app.all('*', function(req, res, next) {
@@ -23,17 +22,9 @@ app.all('*', function(req, res, next) {
     next();
 });
 app.get("/performancemonitor",(req,res)=>{
-
-    console.group("Dirnamess");
-
     console.log("__Dirname", __dirname);
-   
-//     // console.log("another: ",path.basename(path.dirname(filename)));
-    console.groupEnd();
-// app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
     console.log("got here");
     res.sendFile(path.join(__dirname, 'public', 'build-performancemonitor', 'index.html'));
-    // res.setHeader("Cache-Control", "no-cache");
     // res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
     // res.sendFile('Portofolio' + "/" + "build" + "/" + "index.html",{'root':'../../'});
 })
