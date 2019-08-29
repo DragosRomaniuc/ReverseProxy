@@ -1,11 +1,11 @@
 
 const express = require('express');
-// const cors = require('cors');
-const proxy = require('http-proxy-middleware');
 const path = require('path');
 const bodyParser = require('body-parser');
 const app = express();
 app.use(express.static('public'));
+app.use(bodyParser.urlencoded({extended: true, limit:'50mb'}))
+app.use(bodyParser.json())
 app.all('*', function(req, res, next) {
     if (!req.get('Origin')) return next();
 
@@ -32,7 +32,7 @@ app.get("/performancemonitor",(req,res)=>{
     console.groupEnd();
 // app.use(express.static(path.resolve('../../', 'PerformanceMonitor', 'client', 'build')));
     console.log("got here");
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'build-performancemonitor', 'index.html'));
     // res.setHeader("Cache-Control", "no-cache");
     // res.sendFile('PerformanceMonitor' + "/" + "client" + "/" + "build" + "/" + "index.html",{'root':'../../'});
     // res.sendFile('Portofolio' + "/" + "build" + "/" + "index.html",{'root':'../../'});
